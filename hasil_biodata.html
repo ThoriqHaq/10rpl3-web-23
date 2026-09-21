@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Hasil Biodata</title>
+  <style>
+    table {
+      font-family: Arial, sans-serif;
+      border-collapse: collapse;
+      width: 250px;
+      margin-bottom: 20px;
+    }
+
+    td {
+      border: 1px solid #555;
+      padding: 6px 10px;
+      text-align: left;
+    }
+
+    td:first-child {
+      font-weight: bold;
+    }
+
+    a {
+      color: blue;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Hasil Biodata</h2>
+
+  <table>
+    <tbody>
+      <tr>
+        <td>Nama</td>
+        <td id="hNama">-</td>
+      </tr>
+      <tr>
+        <td>Alamat</td>
+        <td id="hAlamat">-</td>
+      </tr>
+      <tr>
+        <td>Jurusan</td>
+        <td id="hJurusan">-</td>
+      </tr>
+      <tr>
+        <td>Jenis Kelamin</td>
+        <td id="hJk">-</td>
+      </tr>
+      <tr>
+        <td>Tinggi Badan</td>
+        <td><span id="hTinggi">-</span> cm</td>
+      </tr>
+      <tr>
+        <td>Berat Badan</td>
+        <td><span id="hBerat">-</span> kg</td>
+      </tr>
+      <tr>
+        <td>Hobi</td>
+        <td id="hHobi">-</td>
+      </tr>
+      <tr>
+        <td>No. HP</td>
+        <td id="hNohp">-</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <a href="form_biodata.html">&larr; Kembali ke Form</a>
+
+  <script>
+    const dataJSON = localStorage.getItem('dataSiswa');
+
+    if (dataJSON) {
+      const data = JSON.parse(dataJSON);
+
+      document.getElementById('hNama').textContent = data.nama || '-';
+      document.getElementById('hAlamat').textContent = data.alamat || '-';
+      document.getElementById('hJurusan').textContent = data.jurusan || '-';
+      document.getElementById('hJk').textContent = data.jk || '-';
+      document.getElementById('hTinggi').textContent = data.tinggi || '-';
+      document.getElementById('hBerat').textContent = data.berat || '-';
+      document.getElementById('hHobi').textContent = data.hobi || '-';
+      document.getElementById('hNohp').textContent = data.nohp || '-';
+    }
+  </script>
+
+</body> 
+</html>
