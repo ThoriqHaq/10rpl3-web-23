@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Biodata Siswa</title>
+</head>
+<body>
+
+  <h2>Biodata Siswa</h2>
+
+  <form id="biodataForm">
+    <label>Nama:</label><br>
+    <input type="text" id="nama" required><br><br>
+
+    <label>Alamat:</label><br>
+    <textarea id="alamat" rows="4" cols="40" required></textarea><br><br>
+
+    <label>Jenis Kelamin</label><br>
+    <input type="radio" name="jk" value="Pria" required> Pria
+    <input type="radio" name="jk" value="Perempuan"> Perempuan
+    <input type="radio" name="jk" value="Pria" required> Boti<br><br>
+
+    <label>Jurusan:</label>
+    <select id="jurusan">
+      <option value="RPL">RPL</option>
+      <option value="TKR">TKR</option>
+      <option value="TEI">TEI</option>
+      <option value="TKJ">TKJ</option>
+      <option value="TSM">TSM</option>
+    </select><br><br>
+
+    <label>Tinggi Badan (cm):</label><br>
+    <input type="number" id="tinggi"><br><br>
+
+    <label>Berat Badan (kg):</label><br>
+    <input type="number" id="berat"><br><br>
+
+    <label>Hobi:</label><br>
+    <input type="text" id="hobi"><br><br>
+
+    <label>No Hp:</label><br>
+    <input type="text" id="nohp"><br><br>
+
+    <button type="submit">Simpan</button>
+  </form>
+
+  <script>
+    document.getElementById('biodataForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const dataSiswa = {
+        nama: document.getElementById('nama').value,
+        alamat: document.getElementById('alamat').value,
+        jk: document.querySelector('input[name="jk"]:checked')?.value || '',
+        jurusan: document.getElementById('jurusan').value,
+        tinggi: document.getElementById('tinggi').value,
+        berat: document.getElementById('berat').value,
+        hobi: document.getElementById('hobi').value,
+        nohp: document.getElementById('nohp').value
+      };
+
+      localStorage.setItem('dataSiswa', JSON.stringify(dataSiswa));
+      window.location.href = 'hasil_biodata.html';
+    });
+  </script>
+
+</body>
+</html>
